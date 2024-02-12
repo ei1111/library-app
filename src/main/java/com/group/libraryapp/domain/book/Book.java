@@ -1,8 +1,7 @@
 package com.group.libraryapp.domain.book;
 
+import jakarta.persistence.*;
 import org.springframework.util.StringUtils;
-
-import javax.persistence.*;
 
 @Entity
 public class Book {
