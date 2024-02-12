@@ -37,11 +37,10 @@ public class BookService {
         String userName = request.getUserName();
         // 1.대출 중인지 책 정보룰 가져온다
         Book book = bookRepository.findByName(bookName).orElseThrow(IllegalArgumentException::new);
-        Long bookId = book.getId();
 
         //2 대출기록 정보를 확인해서 대출중인지 확인한다.
         //3.대출 중이라면 예외를 발생시킨다.
-        if (userLoanHistoryRepository.existsByBookNameAndIsReturn(bookName, false)) {
+        if (userLoanHistoryRepository.existsByBookNameAndIsReturn(book.getName(), false)) {
             throw new IllegalArgumentException("대출되어 있는 책입니다.");
         }
         //4.유저 정보 가져오기
